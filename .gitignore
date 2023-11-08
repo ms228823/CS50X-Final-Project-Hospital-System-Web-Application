@@ -1,45 +1,45 @@
-# Ignore Flax project files
-Binaries/
-Cache/
-Logs/
-Output/
-Screenshots/
-*.HotReload.*
+# Flask .gitignore
 
-# Ignore Visual Studio project files (generated locally)
-*.csproj
-*.sln
+# Python virtual environment
+venv/
+__pycache__/
+*.pyc
+*.pyo
+__pycache__
+*.pyc
 
-# Ignore thumbnails created by Windows
-Thumbs.db
+# Environment-specific settings
+.env
+.env.*
+*.sqlite
 
-# Ignore files built by Visual Studio
-*.obj
-*.exe
-*.pdb
-*.user
-*.aps
-*.pch
-*.vspscc
-*_i.c
-*_p.c
-*.ncb
-*.suo
-*.tlb
-*.tlh
-*.bak
-*.cache
-*.ilk
+# Compiled Python files
+*.pyc
+
+# Logs
+logs/
 *.log
-[Bb]in
-[Dd]ebug*/
-*.lib
-*.sbr
-obj/
-[Rr]elease*/
-_ReSharper*/
-[Tt]est[Rr]esult*
-.vs/
 
-# Ignore Nuget packages folder
-packages/
+# Output files
+instance/
+config.py
+
+# IDE-specific directories
+.vscode/
+.idea/
+
+# Compiled files and static assets
+__pycache__/
+*.pyc
+/static/
+
+# Database
+db.sqlite
+migrations/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+
+# Local development files
+.env.local
