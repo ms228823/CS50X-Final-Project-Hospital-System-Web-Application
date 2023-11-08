@@ -1,0 +1,16 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+footer{
+    /* background-image: linear-gradient(to bottom right, #7d7398, #ed9b8b); */
+    background-color: #7d868f;
+    margin: 0%;
+    color: aliceblue;
+    padding-bottom: 3rem;
+    margin-top: auto !important;
+    height: 20px;
+    text-align: center;
+    font-size: 20pt;
+}

@@ -1,0 +1,128 @@
+body {
+    /* background-image: url("/static/images/pexels-stephan-seeber-1054221.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; */
+    background-color: #E1EAF3;
+
+}
+html, body {
+    margin: 0;
+    padding: 0;
+}
+/*  */
+.label{
+    margin-bottom : .7rem !important ;
+    padding-top: 12px;
+    font-size: 20pt;
+    color: #f9f7f7;
+}
+/*  */
+.emp_info{
+    text-align: center;
+    color: #969696;
+}
+/* tables*/
+table {
+    counter-reset: tableCount;
+    color: #f9f7f7;
+}
+
+.counterCell:before {
+    content: counter(tableCount);
+    counter-increment: tableCount;
+}
+
+#theadshares {
+    background-color: #095b85;
+}
+
+#theadcash {
+    background-color: #343a40;
+}
+
+#theadmain {
+    background-color: #4d512b;
+}
+
+tbody {
+    background-color: #f9f7f7;
+}
+
+.container {
+    text-align: center;
+    align-items: center;
+}
+/*  */
+.content {
+    margin-top: auto;
+    margin-bottom: 10%;
+    margin-left: 25%;
+    text-align: center;
+    align-items: center;
+    width: 50%;
+    /* height: 70%; */
+    border-radius: 20px;
+    /* background-image: url("/static/images/pexels-nachelle-nocom-2406250.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; */
+    background-color: #D1E2EE;
+    height: auto;
+
+}
+/*  */
+button {
+    border-radius: 5px;
+    border-color: transparent;
+    width: 45%;
+    background-color: #F4CD93;
+    margin: 15px;
+    padding: 10px;
+    font-size: 24pt;
+    color: #f9f7f7;
+}
+/*  */
+a {
+    text-decoration: none;
+    color: #f9f7f7;
+}
+
+/* a:hover{
+  text-decoration: none;
+  color: #b19530;
+} */
+button:hover {
+    border-radius: 5px;
+    width: 45%;
+    transition: 240ms;
+    background-color: #F6A693;
+    margin: 15px;
+    padding: 10px;
+    font-size: 24pt;
+    color: #f9f7f7;
+}
+
+#Patient_registeration {
+    margin-top: 20px;
+}
+
+#logout {
+    margin-bottom: 20px;
+}
+input {
+    margin:10px 0;
+    padding:10px;
+    border:0;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  }
+select {
+    color: #808080;
+    margin:10px 0;
+    padding:10px;
+    width: 29%;
+    border:0;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    }

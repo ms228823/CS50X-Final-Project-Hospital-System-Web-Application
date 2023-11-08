@@ -1,0 +1,119 @@
+
+html {
+    background-color: #E1EAF3;
+}
+.emp_info{
+    text-align: center;
+    color: #969696;
+}
+/*  */
+.label{
+    margin-bottom: 50px !important;
+    margin-top: -30px;
+    font-size: 24pt;
+    color: #fff;
+}
+/*  */
+.dateslabel{
+    font-size: 18pt;
+    color: #fff;
+    margin: 2px;
+
+}
+/* .white {
+    color: #ffffff;
+} */
+
+.container {
+    text-align: center;
+    align-items: center;
+    /* display: flex; */
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 5%;
+    margin-left: 25%;
+    text-align: center;
+    align-items: center;
+    width: 50%;
+    height: auto;
+    border-radius: 20px;
+    /* background-image: url("/static/images/pexels-evie-shaffer-3825880.jpg"); */
+    background-color: #9a9a9a9c;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.head {
+    color: #ffffff;
+    margin-right: 5%;
+    text-align: start;
+}
+
+.inputs {
+    width: 40%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    margin-left: 30%;
+}
+.form-detail{
+    width: 100%;
+    margin: 5%;
+}
+/* .form-control{
+    width :100% ;
+    margin: 5%;
+} */
+
+input {
+    margin:10px 0;
+    padding:10px;
+    width: 40%;
+    border:0;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  }
+
+input[type="date"] {
+    color: #808080;
+    margin:10px 0;
+    padding:10px;
+    width: 40%;
+    border:0;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    }
+
+select {
+    color: #808080;
+    margin:10px 0;
+    padding:10px;
+    width: 44%;
+    border:0;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    }
+
+button:hover {
+    border-radius: 5px;
+    width: 60%;
+    transition: 240ms;
+    background-color: #F6A693;
+    margin: 15px;
+    padding: 10px;
+    font-size: 20pt;
+    color: #f9f7f7;
+}
+
+button {
+    border-radius: 5px;
+    border-color: transparent;
+    width: 60%;
+    background-color: #F4CD93;
+    margin: 15px;
+    padding: 10px;
+    font-size: 20pt;
+    color: #f9f7f7;
+}

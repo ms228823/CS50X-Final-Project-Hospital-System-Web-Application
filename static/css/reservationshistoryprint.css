@@ -1,0 +1,49 @@
+@page {
+    size: auto;
+    margin: 0mm;
+}
+.header-outer{
+    display: none;
+    box-shadow: none;
+}
+header a{
+    display: none;
+    
+}
+footer{
+    display: none;
+}
+.header-logo h1 {
+	display: block;
+	height: calc(var(--header-inner-height) - 30px);
+    /* color: conic-gradient(#67399B, #F9DB0E, #48B7CD); */
+}
+nav{
+    display: none;
+}
+h2{
+    display: none;
+}
+table {
+    /* margin-left: 0.3%;
+    margin-right: 0.3%; */
+
+    font-family: Times, 'Times New Roman', serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+button {
+    display: none;
+}
