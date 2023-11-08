@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Main
+{% endblock %}
+
+{% block css %}href="/static/css/reservationshistory.css"{% endblock %}
+{% block printcss %}href="/static/css/reservationshistoryprint.css"{% endblock %}
+
+{% block info %}            <div class="emp_info">
+    <h2>{{employee_info[0]["first_name"]}}, {{employee_info[0]["role"]}}</h2>
+</div>{% endblock %}
+
+{% block main %}
+
+    {% if (employee_info[0]["role"] == "Admin") or (employee_info[0]["role"] == "Receptionist") or (employee_info[0]["role"] == "Reporter") or (employee_info[0]["role"] == "Reception manager") and (employee_info[0]["status"] == "Working") %}
+
+<!--  table tablestriped-->
+        <br><br><br><br>
+        <table class=" ">
+            <thead class="thead-dark">{# id="theadmain" #}
+                <tr>
+                    <th class="text-start head">Rooms No.</th>
+                    <th class="text-start head">pateint First Name</th>
+                    <th class="text-end head">Pateint Middle Name</th>
+                    <th class="text-start head">Pateint Last Name</th>
+                    <th class="text-end head">Check In Date</th>
+                    <th class="text-start head">Check Out Date</th>
+                    <th class="text-start head">Exit Date</th>
+                    <th class="text-end head">Total Price</th>
+                    <th class="text-start head">Payment Method</th>
+                    <th class="text-start head">Registration Time</th>
+                    <th class="text-end head">Reservation Status</th>
+                    <th class="text-start head">User Name</th>
+                    <th class="text-start head">User Role</th>              
+                </tr>
+            </thead>
+            <tbody>
+        <!-- Loop through the database entries to display them in this table -->
+                {% for reservation_data in reservation_data %}
+                    <tr>
+                        <td class="text-start data">{{ reservation_data["room_number"] }}</td>
+                        <td class="text-end data">{{ reservation_data["pateint_first_name"] }}</td>
+                        <td class="text-start data">{{ reservation_data["pateint_middle_name"] }}</td>
+                        <td class="text-start data">{{ reservation_data["pateint_last_name"] }}</td>
+                        <td class="text-end data">{{ reservation_data["checkin"] }}</td>
+                        <td class="text-start data">{{ reservation_data["checkout"] }}</td>
+                        <td class="text-start data">{{ reservation_data["exit_date"] }}</td>
+                        <td class="text-end data">{{ reservation_data["price"] }}</td>
+                        <td class="text-start data">{{ reservation_data["payment"] }}</td>
+                        <td class="text-start data">{{ reservation_data["registration_time"] }}</td>
+                        <td class="text-end data">{{ reservation_data["reservation_status"] }}</td>
+                        <td class="text-start data">{{ reservation_data["user_first_name"] }}</td>
+                        <td class="text-start data">{{ reservation_data["user_role"] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table><br><br><br><br> 
+<!-- print report button -->
+        <button onclick="window.print()">Print this page</button>
+    {% else %}
+        <div class="alert alert-danger" role="alert">
+            <i class="bi bi-exclamation-octagon-fill"></i>
+            Invalid role or suspicious action!
+        </div>
+    {% endif %}
+
+{% endblock %}

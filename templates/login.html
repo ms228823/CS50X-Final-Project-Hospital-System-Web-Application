@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{#{% block links %}
+<!-- Fonts google -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/bootstrap-4.0.0-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<!-- popper -->
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+{% endblock %}
+#}
+{% block css %}href="/static/css/login.css"{% endblock %}
+
+
+{% block title %}
+    Login Page
+{% endblock %}
+
+{% block main %}
+
+    {% if warning == 1 %}
+        <div class="alert alert-warning" role="alert">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            Enter Username!
+        </div>
+    {% elif warning == 2 %}
+        <div class="alert alert-warning" role="alert">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            Enter Password!
+        </div>
+    {% elif warning == 3 %}
+        <div class="alert alert-danger" role="alert">
+            <i class="bi bi-exclamation-octagon-fill"></i>
+            Invalid Username/Password!
+        </div>
+    {% endif %}
+
+    <div class="container">
+        <div class="content">
+            <div class="head">
+                <h3>Sign In <strong>Hospital system</strong></h3>
+            </div>
+            <form action="/login" method="post">
+                {% if warning == 1 %}
+                    <div class="inputs first">
+                        <input type="text" class="form-control" id="usernamered" autocomplete="off" name="username" placeholder="username" required>
+                    </div>
+                {% elif warning == 2 %}
+                    <div class="inputs first">
+                        <input type="text" class="form-control" id="usernamered" autocomplete="off" name="username" placeholder="username" required>
+                    </div>
+                {% elif warning == 3 %}
+                    <div class="inputs first">
+                        <input type="text" class="form-control" id="usernamered" autocomplete="off" name="username" placeholder="username" required>
+                    </div>
+                {% else %}
+                    <div class="inputs first">
+                        <input type="text" class="form-control" id="username" autocomplete="off" name="username" placeholder="username" required>
+                    </div>
+                {% endif %}
+                {% if warning == 1 %}
+                    <div class="inputs last ">
+                        <input type="password" class="form-control" id="passwordred" autocomplete="off" required placeholder="password" name="password">
+                    </div>
+                {% elif warning == 2 %}
+                    <div class="inputs last ">
+                        <input type="password" class="form-control" id="passwordred" autocomplete="off" required placeholder="password" name="password">
+                    </div>
+                {% elif warning == 3 %}
+                    <div class="inputs last ">
+                        <input type="password" class="form-control" id="passwordred" autocomplete="off" required placeholder="password" name="password">
+                    </div>
+                {% else %}
+                    <div class="inputs last ">
+                        <input type="password" class="form-control" id="password" autocomplete="off" required placeholder="password" name="password">
+                    </div>
+                {% endif %}
+
+                <button type="submit" class="btn btn-pill text-white btn-block btn-primary" id="submit">Log In</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

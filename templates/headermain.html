@@ -1,0 +1,32 @@
+
+{% block nav %}
+    <header class="header-outer">
+        <div class="header-inner responsive-wrapper">
+            <div class="header-logo">
+                <a href="/"><h1>AL SALAM <strong>HOSPITAL</strong></h1></a>
+            </div>
+            <div>
+                {% block info %} {% endblock %}
+            </div>
+            {% if ((employee_info[0]["role"] == "Admin") and (employee_info[0]["status"] == "Working")) or ((employee_info[0]["role"] == 'Reception manager') and (employee_info[0]["status"] == "Working")) or ((employee_info[0]["role"] == 'Reporter') and (employee_info[0]["status"] == "Working")) %}
+                <nav class="header-navigation">
+                    {#<a href="/">Home</a>#}
+                    <a href="/printreport">Print Report</a>
+                    <a href="/reservationshistory">Reservations History</a>
+                    <a href="/checkrooms">Check Rooms</a>
+
+                    <!-- <button>Menu</button> -->
+                </nav>
+            {% else %}
+                <nav class="header-navigation">
+                    {#<a href="/">Home</a>#}
+                    {#<a href="/printreport">Print Report</a>#}
+                    <a href="/reservationshistory">Reservations History</a>
+                    <a href="/checkrooms">Check Rooms</a>
+
+                    <!-- <button>Menu</button> -->
+                </nav>
+            {% endif %}
+        </div>
+    </header>
+{% endblock %}

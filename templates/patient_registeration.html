@@ -1,0 +1,229 @@
+{% extends "layout.html"%}
+
+{% block css %}href="/static/css/Patient_registeration.css"{% endblock %}
+
+{% block title %}
+    registeration
+{% endblock %}
+
+{#{% block links %}
+<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/bootstrap-4.0.0-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+{% endblock %}#}
+
+{% block info %}            <div class="emp_info">
+    <h2>{{employee_info[0]["first_name"]}}, {{employee_info[0]["role"]}}</h2>
+</div>{% endblock %}
+
+{% block main %}
+{% if warning == 1 %}
+   <div class="alert alert-warning" role="alert">
+      <i class="bi bi-exclamation-triangle-fill"></i> 
+      Choose Title!
+   </div>
+{% elif warning == 2 %}
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        Enter First name!
+    </div>
+{% elif warning == 3 %}
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        Enter Last name!
+    </div>
+{% elif warning == 4 %}
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        Choose genders!
+    </div>
+{% elif warning == 5 %}
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        Enter Birth date!
+    </div>
+{% elif warning == 6 %}
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        Choose Nationality!
+    </div>
+{% elif warning == 7 %}
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        Enter Id (National id or Passport No.)!
+    </div>
+{% elif warning == 8 %}
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        Enter your address (Street & No. )!
+    </div>
+{% elif warning == 9 %}
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        Enter your phone number!
+    </div>
+{% elif warning == 10 %}
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        Enter your E-mail!
+    </div>
+{% elif warning == 11 %}
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        Enter emergency contact name!
+    </div>
+{% elif warning == 12 %}
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        Enter emergency contact relation!
+    </div>
+{% elif warning == 13 %}
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        Enter emergency contact phone!
+    </div>
+{% elif warning == 14 %}
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        Enter Day!
+    </div>
+{% elif warning == 15 %}
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        Enter Month!
+    </div>
+{% elif warning == 16 %}
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        Enter Year!
+    </div>
+{% elif warning == 17 %}
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        Entered Day out of range!
+    </div>
+{% elif warning == 18 %}
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        Entered Month out of range!
+    </div>
+{% elif warning == 19 %}
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        Entered Year out of range!
+    </div>
+{% endif %}
+
+{% if (employee_info[0]["role"] == "Admin") or (employee_info[0]["role"] == "Receptionist")  or (employee_info[0]["role"] == "Reception manager") and (employee_info[0]["status"] == "Working") %}
+
+<!--<body class="form-v10"> -->
+    <div class="page-content">
+        <div class="form-v10-content">
+            <form class="form-detail" action="/patientregisteration" method="post" id="myform">
+                <div class="form-left">
+                    <h2>General Infomation</h2>
+                    <div class="form-row">
+                        <select name="title">
+                            <option class="option" disabled selected>Title</option>
+                            {% for title in titles %}
+                                <option value="{{title}}">{{title}}</option>
+                            {% endfor %}
+                        </select>
+                        <span class="select-btn">
+                            <i class="bi bi-chevron-down"></i>
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row form-row-1">
+                            <input type="text" name="first_name" id="first_name" class="input-text" placeholder="First Name" required>
+                        </div>
+                        <div class="form-row form-row-2">
+                            <input type="text" name="middle_name" id="last_name" class="input-text" placeholder="Middle Name">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <input type="text" name="last_name" id="last_name" class="input-text" placeholder="Last Name" required>
+                    </div>
+                    <div class="form-row">
+                        <select name="gender">
+                            <option selected disabled>gender</option>
+                            {% for gender in genders %}
+                                <option value="{{gender}}">{{gender}}</option>
+                            {% endfor %}
+                        </select>
+                        <span class="select-btn">
+                            <i class="bi bi-chevron-down"></i>
+                        </span>
+                    </div>
+                    <div class="form-row">
+                        <p>Birth date</p>
+                        <input type="date" name="birth_date" id="birth_date">
+                    </div>
+
+                <!-- <div class="form-row">
+
+               </div>
+               <div class="form-row">
+
+               </div> -->
+                    <div class="form-group">
+                        <div class="form-row form-row-1">
+                            <select name="nationality">
+                                <option selected disabled>Nationality</option>
+                                {% for country in countries %}
+                                    <option value="{{country}}">{{country}}</option>
+                                {% endfor %}
+                            </select>
+                            <span class="select-btn">
+                                <i class="bi bi-chevron-down"></i>
+                            </span>
+                        </div>
+                        <div class="form-row form-row-2">
+                            <input type="text" name="id" id="id" placeholder="id" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-right">
+                    <h2>Contact Details</h2>
+                    <div class="form-row">
+                        <input type="text" name="street" class="street" id="street" placeholder="Street + Nr" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="text" name="phone1" class="phone" id="phone" placeholder="Phone Number 1" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="text" name="phone2" class="phone" id="phone" placeholder="Phone Number 2">
+                    </div>
+                    <div class="form-row">
+                        <input type="text" name="your_email" id="your_email" class="input-text" placeholder="Your Email">
+                    </div>
+
+                    <div class="Emergency">
+                        <h2 id="emergency_contact">Emergency contact</h2>
+                        <div class="form-row">
+                            <input type="text" name="emergency_contact_name" id="emergency_contact_name" class="input-text" required placeholder="Emergency contact name">
+                        </div>
+                        <div class="form-row">
+                            <input type="text" name="emergency_contact_relation" id="emergency_contact_relation" class="input-text" required placeholder="Emergency contact relation">
+                        </div>
+                        <div class="form-row">
+                            <input type="text" name="emergency_contact_address" id="emergency_contact_address" class="input-text" placeholder="Emergency contact address">
+                        </div>
+                        <div class="form-row">
+                            <input type="text" name="emergency_contact_phone" class="phone" id="emergency_contact_phone" placeholder="Emergency contact phone" required>
+                        </div>
+                    </div>
+                    <div class="form-row-last">
+                        <input type="submit" name="register" class="register" value="Register Patient">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% else %}
+    <div class="alert alert-danger" role="alert">
+        <i class="bi bi-exclamation-octagon-fill"></i>
+        Invalid role or suspicious action!
+    </div>
+{% endif %}
+{% endblock %}

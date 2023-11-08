@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- CSS -->
+        <!-- main css -->
+        <!-- <link rel="stylesheet" href="main.css"> -->
+        <link rel="stylesheet" href="/static/css/headerstyle.css">
+        <link rel="stylesheet" {% block css %}{% endblock %} media="screen">
+        <!-- <link rel="stylesheet" {% block maincss %}{% endblock %} > -->
+        <link rel="stylesheet" href="/static/css/footer.css">
+        <link rel="stylesheet" {% block printcss %}{% endblock %} media="print">
+        <!-- icon -->
+        <link rel="icon" type="image/x-icon" href="/static/images/hospitalicon.ico">
+        <!---->
+        {% block links %}
+        {% endblock %}
+
+        <title>Al Salam: {% block title %} {% endblock %}</title>
+    </head>
+
+    <body class=""><!--bg-transparent-->
+        <!-- Sticky header -->
+        <header class="header-outer">
+            <div class="header-inner responsive-wrapper">
+                <div class="header-logo">
+                    <a href="/"><h1>AL SALAM <strong>HOSPITAL</strong></h1></a>
+                </div>
+                <div>
+                    {% block info %} {% endblock %}
+                </div>
+                {#{% if ((employee_info[0]["role"] == "Admin") and (employee_info[0]["status"] == "Working")) or ((employee_info[0]["role"] == 'Reception manager') and (employee_info[0]["status"] == "Working")) or ((employee_info[0]["role"] == 'Reporter') and (employee_info[0]["status"] == "Working")) %}
+                    <nav class="header-navigation">
+                        {#<a href="/">Home</a>#
+                        <a href="/printreport">Print Report</a>
+                        <a href="/reservationshistory">Reservations History</a>
+                        <a href="/checkrooms">Check Rooms</a>
+
+                        <!-- <button>Menu</button> -->
+                    </nav>
+                {% else %}#}
+                    <nav class="header-navigation">
+                        {#<a href="/">Home</a>#}
+                        {#<a href="/printreport">Print Report</a>#}
+                        <a href="/reservationshistory">Reservations History</a>
+                        <a href="/checkrooms">Check Rooms</a>
+
+                        <!-- <button>Menu</button> -->
+                    </nav>
+                {#{% endif %}#}
+            </div>
+        </header>
+        {% block main %}
+            <!-- <h1>{{employee_info[0]["first_name"]}}</h1>
+            <h1>{{employee_info[0]["role"]}}</h1> -->
+            <script>
+                $(function() {
+                    'use strict';
+
+
+                    $('.form-control').on('input', function() {
+                        var $field = $(this).closest('.form-group');
+                        if (this.value) {
+                            $field.addClass('field--not-empty');
+                        } else {
+                            $field.removeClass('field--not-empty');
+                        }
+                    });
+
+                });
+            </script>
+        <!-- Jquery -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <!-- popper -->
+            <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+        <!-- Bootstrap -->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+     -->
+        {% endblock%}
+        <!-- Footer -->
+        <footer id="mainFooter" class="">
+            <div class="footercontainer py-md-4">
+                <p>Made in Egypt & Saudi Arabia with ❤️ by Mohammed Sameh</p>
+                <!-- <p>&copy; Copyright {{2023}} All Rights Reserved to Mohammed Sameh.</p> -->
+
+            </div>
+        </footer> 
+    </body>
+
+</html>

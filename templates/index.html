@@ -1,0 +1,202 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Main
+{% endblock %}
+
+{% block css %}href="/static/css/main.css"{% endblock %}
+
+{% block links %}
+<!-- Bootstrap CSS  -->
+<!-- <link rel="stylesheet" href="/static/bootstrap-4.0.0-dist/css/bootstrap.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+{% endblock %}
+{% block info %}            <div class="emp_info">
+    <h2>{{employee_info[0]["first_name"]}}, {{employee_info[0]["role"]}}</h2>
+</div>{% endblock %}
+
+{% block main %}
+    {% block nav %}
+    {% endblock %}
+    <div class="justify-content-center container ">
+        {% if sucessed == 1 %}
+            <div class="alert alert-success" role="alert">
+                <i class="bi bi-check-circle-fill"></i>
+                Succeed!
+            </div>
+        {% endif %}
+        <!-- Page Content -->
+        {% if (employee_info[0]["role"] == "Admin") and (employee_info[0]["status"] == "Working") %}
+
+            <div class="content">
+
+                <div id="" class="Icons">
+                    <div id="Patient_registeration" class="indexbuttons">
+                        <!--  -->
+                        <button type="button" name="action_button" name="Patientregisteration"><a href="/patientregisteration">Patient registration</a></button>
+                    </div>
+
+                    <div id="checkrooms" class="indexbuttons">
+                        <!-- -->
+                        <button type="button" name="action_button" value="checkrooms"><a href="/checkrooms">Check rooms</a> </button>
+                    </div>
+
+                    <div id="checkin" class="indexbuttons">
+                        <!--  -->
+                        <button type="button" name="action_button" value="checkin"><a href="/checkin">Check in</a></button>
+                    </div>
+
+                    <div id = "checkout" class = "indexbuttons">
+                        <!--  -->
+                        <button type="button" name="action_button" value ="checkout"><a href="/checkout">Check out</a></button>
+                    </div> 
+
+                    <div id="printreport" class="indexbuttons">
+                        <!--  -->
+                        <button type="button" name="action_button" value="printreport"><a href="/printreport">Employees report</a></button>
+                    </div>
+             
+                    <div id = "addnewuser" class = "indexbuttons">
+                        
+                        <button type="button" name="action_button" value = "addnewuser"><a href="/addnewuser">Add new user</a></button>
+                    </div>
+
+                    <div id = "removeuser" class = "indexbuttons">
+                        <!-- -->
+                        <button type="button" name="action_button" value ="changinguserstatus"><a href="/changinguserstatus">Changing user status</a></button>
+                    </div>
+
+                    <div id = "reservationshistory" class = "indexbuttons">
+                        <!-- -->
+                        <button type="button" name="action_button" value ="reservationshistory"><a href="/reservationshistory">Reservations History</a></button>
+                    </div>
+
+                    <div id="logout" class="indexbuttons">
+                        <!--  -->
+                        <button type="button" name="action_button" value="logout"><a href="/logout">Log out</a></button>
+                    </div>
+                </div>
+            </div>
+        {% elif (employee_info[0]["role"] == 'Receptionist') and (employee_info[0]["status"] == "Working") %}
+            <div class="content">
+
+                <div id="" class="Icons">
+                    <div id="Patient_registeration" class="indexbuttons">
+                        <!--  -->
+                        <button type="button" name="action_button" name="Patientregisteration"><a href="/patientregisteration">Patient registration</a></button>
+                    </div>
+
+                    <div id="checkrooms" class="indexbuttons">
+                        <!-- -->
+                        <button type="button" name="action_button" value="checkrooms"><a href="/checkrooms">Check rooms</a> </button>
+                    </div>
+
+                    <div id="checkin" class="indexbuttons">
+                        <!--  -->
+                        <button type="button" name="action_button" value="checkin"><a href="/checkin">Check in</a></button>
+                    </div>
+
+                    <div id = "checkout" class = "indexbuttons">
+                        <!--  -->
+                        <button type="button" name="action_button" value ="checkout"><a href="/checkout">Check out</a></button>
+                    </div>
+                    
+                    <div id = "reservationshistory" class = "indexbuttons">
+                        <!-- -->
+                        <button type="button" name="action_button" value ="reservationshistory"><a href="/reservationshistory">Reservations History</a></button>
+                    </div>
+
+                    <div id="logout" class="indexbuttons">
+                        <!--  -->
+                        <button type="button" name="action_button" value="logout"><a href="/logout">Log out</a></button>
+                    </div>
+                </div>
+            </div>
+        {% elif (employee_info[0]["role"] == 'Reception manager') and (employee_info[0]["status"] == "Working") %}
+            <div class="content">
+
+                <div id="" class="Icons">
+                    <div id="Patient_registeration" class="indexbuttons">
+                        <!--  -->
+                        <button type="button" name="action_button" name="Patientregisteration"><a href="/patientregisteration">Patient registration</a></button>
+                    </div>
+
+                    <div id="checkrooms" class="indexbuttons">
+                        <!-- -->
+                        <button type="button" name="action_button" value="checkrooms"><a href="/checkrooms">Check rooms</a> </button>
+                    </div>
+
+                    <div id="checkin" class="indexbuttons">
+                        <!--  -->
+                        <button type="button" name="action_button" value="checkin"><a href="/checkin">Check in</a></button>
+                    </div>
+
+                    <div id = "checkout" class = "indexbuttons">
+                        <!--  -->
+                        <button type="button" name="action_button" value ="checkout"><a href="/checkout">Check out</a></button>
+                    </div>
+
+                    <div id="printreport" class = "indexbuttons">
+                        <!--  -->
+                        <button type="button" name="action_button" value="printreport"><a href="/printreport">Employees report</a></button>
+                    </div>
+                    <div id = "addnewuser" class = "indexbuttons">
+                        
+                        <button type="button" name="action_button" value = "addnewuser"><a href="/addnewuser">Add new user</a></button>
+                    </div>
+
+                    <div id = "removeuser" class = "indexbuttons">
+                        <!-- -->
+                        <button type="button" name="action_button" value ="changinguserstatus"><a href="/changinguserstatus">Changing user status</a></button>
+                    </div>
+
+                    <div id = "reservationshistory" class = "indexbuttons">
+                        <!-- -->
+                        <button type="button" name="action_button" value ="reservationshistory"><a href="/reservationshistory">Reservations History</a></button>
+                    </div>
+
+                    <div id="logout" class = "indexbuttons">
+                        <!--  -->
+                        <button type="button" name="action_button" value="logout"><a href="/logout">Log out</a></button>
+                    </div>
+                </div>
+            </div>
+        {% elif (employee_info[0]["role"] == 'Reporter') and (employee_info[0]["status"] == "Working") %}
+            <div class="content">
+
+                <div id="" class="Icons">
+
+                    <div id="checkrooms" class = "indexbuttons">
+                        <!-- -->
+                        <button type="button" name="action_button" value="checkrooms"><a href="/checkrooms">Check rooms</a> </button>
+                    </div>
+
+                    <div id="printreport" class = "indexbuttons">
+                        <!--  -->
+                        <button type="button" name="action_button" value="printreport"><a href="/printreport">Employees report</a></button>
+                    </div>
+
+                    <div id = "reservationshistory" class = "indexbuttons">
+                        <!-- -->
+                        <button type="button" name="action_button" value ="reservationshistory"><a href="/reservationshistory">Reservations History</a></button>
+                    </div>
+
+                    <div id="logout" class = "indexbuttons">
+                        <!--  -->
+                        <button type="button" name="action_button" value="logout"><a href="/logout">Log out</a></button>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+        <h1>{{employee_info[0]["first_name"]}}</h1>
+        <h1>{{employee_info[0]["role"]}}</h1>
+        <h1>{{employee_info[0]["status"]}}</h1>
+
+        <div class="alert alert-danger" role="alert">
+            <i class="bi bi-exclamation-octagon-fill"></i>
+            Invalid role or suspicious action!
+        </div>
+        {% endif %}
+    </div>
+
+{% endblock %}

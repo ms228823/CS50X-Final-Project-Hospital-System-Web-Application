@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Print Report
+{% endblock %}
+
+{% block css %}href="/static/css/printreport.css"{% endblock %}
+{% block printcss %}href="/static/css/printreportprint.css"{% endblock %}
+
+{% block info %}            <div class="emp_info">
+    <h2>{{employee_info[0]["first_name"]}}, {{employee_info[0]["role"]}}</h2>
+</div>{% endblock %}
+
+{% block main %}
+
+    {% if (employee_info[0]["role"] == "Admin") or (employee_info[0]["role"] == "Reporter")  or (employee_info[0]["role"] == "Receptionist")  or (employee_info[0]["role"] == "Reception manager") and (employee_info[0]["status"] == "Working") %}
+
+
+        <br><br><br><br>
+
+        <div>
+            <div>
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Employee's First Name</th>
+                                <th>Employee's Middle Name</th>
+                                <th>Employee's Last Name</th>
+                                <th>Employee's Role</th>
+                                <th>Employee's Status</th>
+                                <!-- <th>Employee's Actions notes of employee</th> -->
+                                <th>Employee's No.of reservations</th>
+                                <th>Employee's Actions notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for action in actions_of_employees %}
+                                {% if action["middle_name"] == "" %}
+                                    <tr>
+                                        <td class="text-start data">{{ action["first_name"] }}</td>
+                                        <td class="text-start data">None</td>
+                                        <td class="text-end data">{{ action["last_name"] }}</td>
+                                        <td class="text-end data">{{ action["role"] }}</td>
+                                        <td class="text-end data">{{ action["status"] }}</td>
+                                        <!-- <td class="text-end data">{{ action["action"] }}</td> -->
+                                        <td class="text-end data">{{ action["number_of_reservations"] }}</td>
+                                        <td class="text-end data">{{ action["actions_notes_of_employee"] }}</td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td class="text-start data">{{ action["first_name"] }}</td>
+                                        <td class="text-start data">{{ action["middle_name"] }}</td>
+                                        <td class="text-end data">{{ action["last_name"] }}</td>
+                                        <td class="text-end data">{{ action["role"] }}</td>
+                                        <td class="text-end data">{{ action["status"] }}</td>
+                                        <!-- <td class="text-end data">{{ action["action"] }}</td> -->
+                                        <td class="text-end data">{{ action["number_of_reservations"] }}</td>
+                                        <td class="text-end data">{{ action["actions_notes_of_employee"] }}</td>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                        </tbody>
+                    </table><br><br><br><br>
+                </div>
+            </div>
+        </div>
+<!-- print report button -->
+        <button onclick="window.print()">Print this page</button>
+    {% else %}
+        <div class="alert alert-danger" role="alert">
+            <i class="bi bi-exclamation-octagon-fill"></i>
+            Invalid role or suspicious action!
+        </div>
+    {% endif %}
+
+{% endblock %}

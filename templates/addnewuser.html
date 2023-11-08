@@ -1,0 +1,290 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add users
+{% endblock %}
+
+{% block css %}href="/static/css/main.css"{% endblock %}
+
+{% block info %}            <div class="emp_info">
+    <h2>{{employee_info[0]["first_name"]}}, {{employee_info[0]["role"]}}</h2>
+</div>{% endblock %}
+
+{% block main %}
+    <!-- warnings -->
+    {% if warning == 1 %}
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        Enter First name!
+    </div>
+    {% elif warning == 2 %}
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        Enter Last name!
+    </div>
+    {% elif warning == 3 %}
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        Enter username!
+    </div>
+    {% elif warning == 4 %}
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        Enter password!
+    </div>
+    {% elif warning == 6 %}
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        Entered password confirmation!
+    </div>  
+    {% elif warning == 5 %}
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        Choose Role!
+    </div>
+    {% elif warning == 7 %}
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        password and password confirmation are not the same!
+    </div>
+    {% endif %}
+
+    {% if (employee_info[0]["role"] == "Admin") and (employee_info[0]["status"] == "Working") %}
+
+    <div class="container">           
+        <div class="content">
+    {#                <div class="row justify-content-center">
+                <div class="col-md-6 contents">
+                    <div class="row justify-content-center">
+                    <div class="col-md-12">#}
+            <div class="form-block">
+                <div class="label">
+                    <h3><strong>Adding system user</strong></h3>
+                </div>
+
+                <form action="/addnewuser" method="post">
+                    <!-- First name -->
+                    {% if warning == 1 %}
+                    <div class="form-group first">
+                        <input type="text" class="form-control" id="ffirst_namered" autocomplete="off" name="first_name" placeholder="First name" required >
+                    </div>
+                    {% else %} 
+                        <div class="form-group first">
+                            <input type="text" class="form-control" id="first_name" autocomplete="off" name="first_name" placeholder="First name" required>
+                        </div>
+                    {% endif %}
+                    <!-- Middle name -->
+                    {#{% if warning == 2 %}
+                        <div class="form-group first">
+                            <input type="text" class="form-control" id="last_namered" autocomplete="off" name="last_name" placeholder="Last name" required>
+                        </div>
+                    {% else %}
+                    {% endif %}#}
+                    <div class="form-group first">
+                        <input type="text" class="form-control" id="middle_name" autocomplete="off" name="middle_name" placeholder="Middle name" >
+                    </div>  
+                    <!-- Last name -->
+                    {% if warning == 2 %}
+                        <div class="form-group first">
+                            <input type="text" class="form-control" id="last_namered" autocomplete="off" name="last_name" placeholder="Last name" required>
+                        </div>
+                    {% else %}
+                        <div class="form-group first">
+                            <input type="text" class="form-control" id="last_name" autocomplete="off" name="last_name" placeholder="Last name" required>
+                        </div>
+                    {% endif %}
+                    <!-- username -->
+                    {% if warning == 3 %}
+                        <div class="form-group first">
+                            <input type="text" class="form-control" id="usernamered" autocomplete="off" name="username" placeholder="Username" required>
+                        </div>
+                    {% else %}
+                        <div class="form-group first">
+                            <input type="text" class="form-control" id="username" autocomplete="off" name="username" placeholder="Username" required>
+                        </div>
+                    {% endif %}
+                    <!-- password -->
+                    {% if warning == 4 %}
+                        <div class="form-group last ">
+                            <input type="password" class="form-control" id="passwordred" autocomplete="off" required placeholder="Password" name="password">
+                        </div>
+                    {% else %}
+                        <div class="form-group last ">
+                            <input type="password" class="form-control" id="password" autocomplete="off" required placeholder="Password" name="password">
+                        </div>
+                    {% endif %}
+                    <!-- Confirmation -->
+                    {% if warning == 6 %}
+                        <div class="form-group last ">
+                            <input type="password" class="form-control" id="passwordred" autocomplete="off" required placeholder="Password confirmation" name="confirmation">
+                        </div>
+                    {% else %}
+                        <div class="form-group last ">
+                            <input type="password" class="form-control" id="password" autocomplete="off" required placeholder="Password confirmation" name="confirmation">
+                        </div>
+                    {% endif %}
+                    <!-- roles -->
+                    {% if warning == 5 %}
+                        <div class="form-group first">
+                            <select name="role" id="rolered">
+                                <option selected disabled> Role</option>
+                                {% for role in roles_for_admin %}
+                                    <option value="{{role}}">{{role}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    {#{% elif warning == 6 %}
+                        <div class="form-group first">
+                            <select name="role" id="rolered">
+                                <option selected disabled> role</option>
+                                {% for role in roles%}
+                                    <option value="{{role}}">{{role}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>#}
+                    {% else %}
+                        <div class="form-group first">
+                            <select name="role" id="role">
+                                <option selected disabled> Role</option>
+                                {% for role in roles_for_admin %}
+                                    <option value="{{role}}">{{role}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    {% endif %}
+                    <!-- submit button -->
+                    <button type="submit" class="btn btn-pill text-white btn-block btn-primary" id="submit">Add New User</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {% elif (employee_info[0]["role"] == "Reception manager") and (employee_info[0]["status"] == "Working") %}
+
+    <div class="container">           
+        <div class="content">
+    {#                <div class="row justify-content-center">
+                <div class="col-md-6 contents">
+                    <div class="row justify-content-center">
+                    <div class="col-md-12">#}
+            <div class="form-block">
+                <div class="label">
+                    <h3>Sign In to <strong>Adding sysytem user</strong></h3>
+                </div>
+
+                <form action="/addnewuser" method="post">
+                    <!-- First name -->
+                    {% if warning == 1 %}
+                    <div class="form-group first">
+                        <input type="text" class="form-control" id="ffirst_namered" autocomplete="off" name="first_name" placeholder="First name" required >
+                    </div>
+                    {% else %} 
+                        <div class="form-group first">
+                            <input type="text" class="form-control" id="first_name" autocomplete="off" name="first_name" placeholder="First name" required>
+                        </div>
+                    {% endif %}
+                    <!-- Middle name -->
+                    {#{% if warning == 2 %}
+                        <div class="form-group first">
+                            <input type="text" class="form-control" id="last_namered" autocomplete="off" name="last_name" placeholder="Last name" required>
+                        </div>
+                    {% else %}
+                    {% endif %}#}
+                    <div class="form-group first">
+                        <input type="text" class="form-control" id="middle_name" autocomplete="off" name="middle_name" placeholder="Middle name" >
+                    </div>  
+                    <!-- Last name -->
+                    {% if warning == 2 %}
+                        <div class="form-group first">
+                            <input type="text" class="form-control" id="last_namered" autocomplete="off" name="last_name" placeholder="Last name" required>
+                        </div>
+                    {% else %}
+                        <div class="form-group first">
+                            <input type="text" class="form-control" id="last_name" autocomplete="off" name="last_name" placeholder="Last name" required>
+                        </div>
+                    {% endif %}
+                    <!-- username -->
+                    {% if warning == 3 %}
+                        <div class="form-group first">
+                            <input type="text" class="form-control" id="usernamered" autocomplete="off" name="username" placeholder="Username" required>
+                        </div>
+                    {% else %}
+                        <div class="form-group first">
+                            <input type="text" class="form-control" id="username" autocomplete="off" name="username" placeholder="Username" required>
+                        </div>
+                    {% endif %}
+                    <!-- password -->
+                    {% if warning == 4 %}
+                        <div class="form-group last ">
+                            <input type="password" class="form-control" id="passwordred" autocomplete="off" required placeholder="Password" name="password">
+                        </div>
+                    {% else %}
+                        <div class="form-group last ">
+                            <input type="password" class="form-control" id="password" autocomplete="off" required placeholder="Password" name="password">
+                        </div>
+                    {% endif %}
+                    <!-- Confirmation -->
+                    {% if warning == 6 %}
+                        <div class="form-group last ">
+                            <input type="password" class="form-control" id="passwordred" autocomplete="off" required placeholder="confirmation" name="Password confirmation">
+                        </div>
+                    {% else %}
+                        <div class="form-group last ">
+                            <input type="password" class="form-control" id="password" autocomplete="off" required placeholder="confirmtion" name="Password confirmation">
+                        </div>
+                    {% endif %}
+                    <!-- roles -->
+                    {% if warning == 5 %}
+                        <div class="form-group first">
+                            <select name="role" id="rolered">
+                                <option selected disabled> Role</option>
+                                {% for role in roles_for_reception_manager %}
+                                    <option value="{{role}}">{{role}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    {#{% elif warning == 6 %}
+                        <div class="form-group first">
+                            <select name="role" id="rolered">
+                                <option selected disabled> role</option>
+                                {% for role in roles%}
+                                    <option value="{{role}}">{{role}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>#}
+                    {% else %}
+                        <div class="form-group first">
+                            <select name="role" id="role">
+                                <option selected disabled> Role</option>
+                                {% for role in roles_for_reception_manager %}
+                                    <option value="{{role}}">{{role}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    {% endif %}
+                    <!-- submit button -->
+                    <button type="submit" class="btn btn-pill text-white btn-block btn-primary" id="submit">Add New User</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {#    </div>
+    </div>
+    </div>
+    </div>
+    #}
+    {% else %}
+{#  <h1>{{employee_info[0]["name"]}}</h1>
+    <h1>{{employee_info[0]["role"]}}</h1>#}
+    {#{% elif warning == 7 %}
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        Entered Role is not in roles table!
+    </div> #}
+    {#{% endif %}#}
+    <div class="alert alert-danger" role="alert">
+        <i class="bi bi-exclamation-octagon-fill"></i>
+        Invalid role or suspicious action!
+    </div>
+    {% endif %}
+{% endblock %}
